@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "typeRoots": ["/Users/mridul/portfolio/node_modules/@types"],
+    "types": ["node", "react", "react-dom"],
+    "paths": {
+      "@/*": ["./src/*"],
+      "react": ["/Users/mridul/portfolio/node_modules/@types/react"],
+      "react/jsx-runtime": ["/Users/mridul/portfolio/node_modules/@types/react/jsx-runtime.d.ts"],
+      "framer-motion": ["/Users/mridul/portfolio/node_modules/framer-motion"]
+    }
+  },
+  "files": ["types/next-shim.d.ts"],
+  "include": ["app/**/*.ts", "app/**/*.tsx", "src/**/*.ts", "src/**/*.tsx", "src/**/*.d.ts"]
+}

@@ -1,0 +1,16 @@
+node_modules
+.next
+out
+build
+*.tsbuildinfo
+next-env.d.ts
+.DS_Store
+
+# user scratch files
+*.mov
+Screen Recording*
+Front-Facing 3D Avatar Portrait.png
+
+# local deploy helper
+deploy.sh
+fix-and-push.sh
