@@ -4,7 +4,7 @@ export const profile = {
   bio: "I build LLM-powered products end-to-end — from data pipelines and evaluation harnesses to the last pixel of the UI.",
   email: "mridulguptayt@gmail.com",
   socials: {
-    github: "https://github.com/mridulgupta",
+    github: "https://github.com/Mridul-pro-coder/Portfolio-website",
     linkedin: "https://linkedin.com/in/mridulgupta",
     x: "https://x.com/mridulgupta",
     youtube: "https://youtube.com/@mridulgupta",
