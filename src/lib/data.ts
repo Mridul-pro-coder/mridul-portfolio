@@ -13,11 +13,103 @@ export const profile = {
 
 export const greeting = "Hey, I'm Mridul 👋";
 
+// General fallback pool — keyword-unaware answers
 export const chatReplies = [
-  "Nice question! Short answer: I'm a demo, but I ship real things — pipelines, evals, and pixel-perfect UIs.",
-  "Great question. I'd start by defining the eval, then building the pipeline, then the interface. That order saves weeks.",
-  "Ha — I'll keep that. For real work, reach out via the Contact card below 👇",
+  "Good one! Short version: I'm a demo, but I ship real things — pipelines, evals, and pixel-perfect UIs.",
+  "I'd start by defining the eval, then building the pipeline, then the interface. That order saves weeks.",
+  "Ha — noted. For real work, reach out via the Contact card below 👇",
   "I build LLM-powered products end to end. Ask me about RAG, fine-tuning, or eval harnesses!",
+  "Fair question. Honestly? I'd spike it in a weekend, measure it, and only then scale it.",
+  "That one's beyond this demo's scope — but it's exactly the kind of thing I like building. Hit me up on Contact.",
+  "I keep a jar of 'why did I write this' comments. Half of them are still there, sadly.",
+  "The best LLM feature is usually the boring one: good retrieval, honest failure states, sane cost.",
+  "If it's not in my eval harness, it doesn't ship. That rule has saved me at least twice.",
+  "Ask me anything else about RAG, agents, fine-tuning, or data — I'll answer the demo way.",
+];
+
+// Keyword-aware topics — first topic with a matching keyword wins
+export type ChatTopic = { match: string[]; lines: string[] };
+
+export const chatTopics: ChatTopic[] = [
+  {
+    match: ["hi", "hey", "hello", "yo "],
+    lines: [
+      "Hey! 👋 Ask me about RAG, fine-tuning, or what I'm working on — I answer the demo way.",
+      "Hey there. One question, one very confident but slightly canned answer — that's the deal.",
+    ],
+  },
+  {
+    match: ["rag", "retrieval", "search", "searches", "vector"],
+    lines: [
+      "RAG is my favourite problem: hybrid retrieval (dense + BM25), a re-ranker, and per-citation traces. The magic is mostly in the boring parts — chunking, metadata, and evals.",
+      "For RAG: don't skip BM25. 'Dense only' feels smarter until you search for a part number and get poetry back. I learned that with 40 enterprise customers.",
+      "Retrieval quality beats model size, 9 times out of 10. Fix the index before you upgrade the model.",
+    ],
+  },
+  {
+    match: ["fine-tun", "finetun", "lora", "fine tun", "train"],
+    lines: [
+      "Fine-tuning: LoRA almost always, full fine-tunes rarely. My kit scrubs the dataset, sweeps hyperparameters, and gates every merge behind an eval. No eval, no merge.",
+      "If your prompt fits in a page, don't fine-tune. Fine-tuning is for when you need a behaviour, not an answer.",
+      "I once fine-tuned a 7B model overnight while hiking. Personal best. The model's worse than the evals say it is.",
+    ],
+  },
+  {
+    match: ["llm", "llms", "model", "models", "gpt", "transformer", "agent"],
+    lines: [
+      "My rule for LLM products: define the eval first, build second. If you can't measure it, you can't ship it.",
+      "Agents are just loops with budgets. The hard part is the failure state — what does 'I can't do that' look like in the UI?",
+      "The best model is the cheapest one that passes your eval. Most teams over-pay for model size on retrieval problems.",
+    ],
+  },
+  {
+    match: ["eval", "metric", "benchmark", "accuracy"],
+    lines: [
+      "Evals are the product, honestly. I build a harness for every model change: win-rate, latency, cost, per-prompt diffs. It's a CI quality gate now.",
+      "Small eval, run always. Big eval, run nightly. A giant eval you never run is just a pile of confidence.",
+      "I track hallucinated-answer rate separately from helpfulness. They move in opposite directions and pretending otherwise is how incidents start.",
+    ],
+  },
+  {
+    match: ["data", "pipeline", "etl", "kafka", "postgres", "database"],
+    lines: [
+      "Data work is where my day actually starts: Kafka in, Postgres out, exactly-once semantics, and a dead-letter queue that gets checked before coffee.",
+      "My best pipeline moves 2B+ events a day and is aggressively boring. Boring is the win.",
+      "Pipeline rule: if a job can't be re-run without side effects, it's a bug waiting for a Friday.",
+    ],
+  },
+  {
+    match: ["project", "work", "built", "portfolio", "code"],
+    lines: [
+      "My favourite project is the RAG search across messy docs — it's the one that ties together everything I do. Check the Projects page for the rest.",
+      "The flagship is a hybrid-retrieval RAG system, but my favourite is the eval dashboard — nobody takes pleasure in regression bars, so I made the bars pretty.",
+      "I build end to end: data pipeline, model layer, API, UI. The last pixel gets the same care as the first query.",
+    ],
+  },
+  {
+    match: ["contact", "email", "hire", "reach", "work with", "job"],
+    lines: [
+      "The Contact page has my email (mridulguptayt@gmail.com) and a form that's just as much a demo as I am. 😄",
+      "Best route: the Contact card below — or grab me on GitHub. I answer faster than this demo.",
+      "If you have a project or a weird model idea, say hi. 'Weird' usually means 'interesting'.",
+    ],
+  },
+  {
+    match: ["fun", "hobby", "chess", "music", "game", "hike", "retro"],
+    lines: [
+      "Chess, lo-fi, hiking, and retro games — the Fun page has the full list, plus a mood card that re-rolls every visit.",
+      "Currently: blitz chess, a jar of code comments, and an SNES I keep 'fixing'. Ask the Fun page for details.",
+      "Hiking is where half my ideas start. The other half start at 3am and never survive review.",
+    ],
+  },
+  {
+    match: ["career", "path", "future", "plan", "next"],
+    lines: [
+      "Next: agent evaluation at scale — making 'this agent got worse' a number you can pin to a commit.",
+      "Long game: LLM systems that explain themselves. Explainability first, always.",
+      "In 5 years? Still probably shipping boring, reliable ML that feels effortless to use. That's the dream.",
+    ],
+  },
 ];
 
 export type Experience = {
